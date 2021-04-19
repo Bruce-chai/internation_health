@@ -20,6 +20,7 @@ class Institution extends Controller
         if ($res === false) {
             return ['code' => 400, 'msg' => $insInstitution->getError()];
         }
+
         return ['code' => 200, 'msg' => '成功'];
     }
 }
