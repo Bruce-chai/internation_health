@@ -18,5 +18,5 @@
 
         $out_put = curl_exec($ch);
 
-        return $out_put;
+        return json_decode($out_put, true);
     }

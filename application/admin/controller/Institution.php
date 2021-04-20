@@ -6,10 +6,10 @@ use think\Controller;
 use think\Request;
 use app\admin\Model\TInsInstitution;
 
-class Institution extends Controller
+class Institution extends Base
 {
     /**
-     * 保存新建的资源
+     * 机构资源信息
      *
      * @param  \think\Request  $request
      * @return array

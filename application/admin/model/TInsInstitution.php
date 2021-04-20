@@ -5,9 +5,8 @@ namespace app\admin\model;
 use think\Log;
 use think\Model;
 
-class TInsInstitution extends Model
+class TInsInstitution extends Base
 {
-    private $jgdm = '49AMU40A0X1UB4209Y';  //机构标识
     private $zzjgdm = '91442000MA4UYBXA9U';  //实体医院统一社会信用代码
     private $jgmc = '山市家有一生综合门诊有限公司';  //机构名称（互联网医院名称）
     private $xzqhdm = '442000';  //行政区划代码
