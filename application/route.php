@@ -8,6 +8,10 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+use think\Route;
+
+Route::rule('saveUsers', 'admin/Person/save', 'post');
+Route::rule('saveInstitution', 'admin/Institution/save', 'post');
 
 return [
     '__pattern__' => [

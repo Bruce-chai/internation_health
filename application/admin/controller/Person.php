@@ -15,7 +15,7 @@ class Person extends Base
      */
     public function save(TPiPerson $TPiPerson)
     {
-        $url = $this->baseHost . 'Internet_health/Person/users';
+        $url = $this->baseHost . 'Person/users';
         $data = create_curl($url);
         if ($data['code'] === 200) {
             $result = $TPiPerson->createData($data['data']);

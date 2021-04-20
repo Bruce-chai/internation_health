@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use think\Controller;
+use think\Log;
 use think\Request;
 use app\admin\Model\TInsInstitution;
 
@@ -16,11 +17,21 @@ class Institution extends Base
      */
     public function save(TInsInstitution $insInstitution)
     {
-        $res = $insInstitution->createData();
-        if ($res === false) {
-            return ['code' => 400, 'msg' => $insInstitution->getError()];
-        }
+        try {
+            $url = $this->baseHost . 'Institution/institution';
+            $data = create_curl($url);
+            if ($data['code'] === 200) {
+                $res = $insInstitution->createData($data['data']);
+                if ($res === false) {
+                    throw new \Exception($insInstitution->getError());
+                }
+            } else {
+                throw new \Exception($data['msg']);
+            }
+            return ['code' => 200, 'msg' => '成功'];
 
-        return ['code' => 200, 'msg' => '成功'];
+        } catch (\Exception $e) {
+            return ['code' => 400, 'msg' => $e->getMessage()];
+        }
     }
 }
