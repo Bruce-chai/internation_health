@@ -2,5 +2,6 @@
 /composer.lock
 /vendor
 /thinkphp
+/runtime
 .idea
 .DS_Store
