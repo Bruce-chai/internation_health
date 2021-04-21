@@ -3,7 +3,6 @@
 namespace app\admin\controller;
 
 use think\Log;
-use app\admin\model\TPiPerson;
 
 class Person extends Base
 {
@@ -13,20 +12,20 @@ class Person extends Base
      * @param  \think\Request  $request
      * @return array
      */
-    public function save(TPiPerson $TPiPerson)
+    public function save()
     {
         $url = $this->baseHost . 'Person/users';
-        $data = create_curl($url);
+        $data = create_curl($url, ['date' => '2021-01-26', 'community' => $this->community]);
         if ($data['code'] === 200) {
-            $result = $TPiPerson->createData($data['data']);
-            if ($result === false) {
-                return ['code' => 400, 'msg' => $TPiPerson->getError()];
+            $res = $this->addAll('t_pi_person', $data['data']);
+            if($res === true){
+                return ['code' => 200, 'msg' => '成功'];
+            } else {
+                return ['code' => 400, 'msg' => $this->getError()];
             }
-
-            return ['code' => 200, 'msg' => '成功'];
         } else {
-            Log::record('error_msg:   ' . $data['msg']);
-            return ['code' => 400, 'msg' => $TPiPerson->getError()];
+            Log::record('error_msg:  ' . $data['msg']);
+            return ['code' => 400, 'msg' => $data['msg']];
         }
     }
 }

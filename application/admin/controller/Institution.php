@@ -5,7 +5,6 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Log;
 use think\Request;
-use app\admin\Model\TInsInstitution;
 
 class Institution extends Base
 {
@@ -15,15 +14,17 @@ class Institution extends Base
      * @param  \think\Request  $request
      * @return array
      */
-    public function save(TInsInstitution $insInstitution)
+    public function save()
     {
         try {
             $url = $this->baseHost . 'Institution/institution';
-            $data = create_curl($url);
+        
+            $data = create_curl($url, ['community' => $this->community]);
             if ($data['code'] === 200) {
-                $res = $insInstitution->createData($data['data']);
+                $res = $this->add('t_ins_institution', $data['data']);
+                
                 if ($res === false) {
-                    throw new \Exception($insInstitution->getError());
+                    throw new \Exception('sfsd');
                 }
             } else {
                 throw new \Exception($data['msg']);
@@ -31,7 +32,8 @@ class Institution extends Base
             return ['code' => 200, 'msg' => '成功'];
 
         } catch (\Exception $e) {
-            return ['code' => 400, 'msg' => $e->getMessage()];
+            Log::record($e->getMessage());
+            return ['code' => 400, 'msg' => 'ssd'];
         }
     }
 }
