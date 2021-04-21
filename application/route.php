@@ -12,6 +12,7 @@ use think\Route;
 
 Route::rule('saveUsers', 'admin/Person/save', 'post');
 Route::rule('saveInstitution', 'admin/Institution/save', 'post');
+Route::rule('saveDepartment', 'admin/Department/save', 'post');
 
 return [
     '__pattern__' => [

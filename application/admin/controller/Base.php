@@ -61,9 +61,6 @@ class Base extends Controller
         
         foreach ($data as $k => $v) {
             $tmp = '';
-            if($v['csrq'] == '0000-00-00'){
-                $v['csrq'] = '2019-01-21';
-            }
             foreach($v as $key => $val){
                 $tmp .= "'$val',";
             }

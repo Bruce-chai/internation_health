@@ -17,7 +17,7 @@ class Institution extends Base
     public function save()
     {
         try {
-            $url = $this->baseHost . 'Department/department';
+            $url = $this->baseHost . 'Institution/institution';
         
             $data = create_curl($url, ['community' => $this->community]);
             if ($data['code'] === 200) {

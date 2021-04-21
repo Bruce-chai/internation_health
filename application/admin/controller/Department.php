@@ -15,11 +15,13 @@ class Department extends Base
      */
     public function save()
     {
+        
         try {
-            $url = $this->baseHost . 'Institution/institution';
+            $url = $this->baseHost . 'Department/department';
 
             $data = create_curl($url, ['community' => $this->community]);
             if ($data['code'] === 200) {
+               
                 $res = $this->addAll('t_ins_department', $data['data']);
 
                 if ($res === false) {
