@@ -21,7 +21,7 @@ class Person extends Base
             if($res === true){
                 return ['code' => 200, 'msg' => '成功'];
             } else {
-                return ['code' => 400, 'msg' => $this->getError()];
+                return ['code' => 400, 'msg' => $this->error];
             }
         } else {
             Log::record('error_msg:  ' . $data['msg']);

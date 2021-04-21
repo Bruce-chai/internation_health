@@ -25,10 +25,9 @@ class Base extends Controller
         $this->pgConnect();
         if ($this->dbconn === false) {
             $msg = "Failed to close connection to " . pg_host($this->dbconn) . ": " . pg_last_error($this->dbconn);
-            Log::recod($msg);
-            Log::record($this->getError());
-            return ['code' => 400, 'msg' => $msg . $this->getError()];
-            $this->response(400, $msg);
+            Log::record($msg);
+            Log::record($this->error);
+            $this->response(400, $msg . $this->error);
         }
     }
 
@@ -78,7 +77,7 @@ class Base extends Controller
         $res = pg_query($sql);
         if ($res === false) {
             $this->error = pg_last_error();
-            Log::record($this->getError());
+            Log::record($this->error);
             return false;
         }
 
@@ -99,7 +98,7 @@ class Base extends Controller
         $res = pg_query($sql);
         if ($res === false) {
             $this->error = pg_last_error();
-            Log::record($this->getError());
+            Log::record($this->error);
             return false;
         }
 

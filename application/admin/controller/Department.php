@@ -4,25 +4,24 @@ namespace app\admin\controller;
 
 use think\Controller;
 use think\Log;
-use think\Request;
 
-class Institution extends Base
+class Department extends Base
 {
     /**
-     * 机构资源信息
+     * 保存新建的资源
      *
      * @param  \think\Request  $request
-     * @return array
+     * @return \think\Response
      */
     public function save()
     {
         try {
-            $url = $this->baseHost . 'Department/department';
-        
+            $url = $this->baseHost . 'Institution/institution';
+
             $data = create_curl($url, ['community' => $this->community]);
             if ($data['code'] === 200) {
-                $res = $this->add('t_ins_institution', $data['data']);
-                
+                $res = $this->addAll('t_ins_department', $data['data']);
+
                 if ($res === false) {
                     throw new \Exception($this->error);
                 }
@@ -33,7 +32,8 @@ class Institution extends Base
 
         } catch (\Exception $e) {
             Log::record($e->getMessage());
-            return ['code' => 400, 'msg' => 'ssd'];
+            return ['code' => 400, 'msg' => $e->getMessage()];
         }
     }
+
 }
