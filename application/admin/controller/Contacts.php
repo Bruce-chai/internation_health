@@ -13,7 +13,7 @@ class Contacts extends Base
      */
     public function save()
     {
-        $url = $this->baseHost . 'Staff/staff';
+        $url = $this->baseHost . 'Contacts/contacts';
         $data = create_curl($url, ['community' => $this->community]);
         if ($data['code'] === 200) {
             $res = $this->addAll('t_ins_contacts', $data['data']);
