@@ -13,6 +13,10 @@ use think\Route;
 Route::rule('saveUsers', 'admin/Person/save', 'post');
 Route::rule('saveInstitution', 'admin/Institution/save', 'post');
 Route::rule('saveDepartment', 'admin/Department/save', 'post');
+Route::rule('saveBusiness', 'admin/Business/save', 'post');
+Route::rule('saveDevice', 'admin/Device/save', 'post');
+Route::rule('saveStaff', 'admin/Staff/save', 'post');
+Route::rule('saveContacts', 'admin/Contacts/save', 'post');
 
 return [
     '__pattern__' => [
