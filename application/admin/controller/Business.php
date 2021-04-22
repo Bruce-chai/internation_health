@@ -13,7 +13,7 @@ class Business extends Base
      */
     public function save()
     {
-        $url = $this->baseHost . 'Person/users';
+        $url = $this->baseHost . 'InstitutionBusiness/institutionBusiness';
         $data = create_curl($url, ['community' => $this->community]);
         if ($data['code'] === 200) {
             $res = $this->addAll('t_ins_institution_business', $data['data']);

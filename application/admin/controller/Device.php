@@ -13,7 +13,7 @@ class Device extends Base
      */
     public function save()
     {
-        $url = $this->baseHost . 'Person/users';
+        $url = $this->baseHost . 'Device/device';
         $data = create_curl($url, ['community' => $this->community]);
         if ($data['code'] === 200) {
             $res = $this->addAll('t_ins_device', $data['data']);
