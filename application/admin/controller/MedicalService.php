@@ -9,7 +9,7 @@ class MedicalService extends Base
 {
     public function saveCase()
     {
-        $url = $this->baseHost . 'Staff/staff';
+        $url = $this->baseHost . 'MedicalService/caseData';
         $data = create_curl($url, ['community' => $this->community]);
         if ($data['code'] === 200) {
             $res = $this->addAll('t_ms_treatment_record', $data['data']);
