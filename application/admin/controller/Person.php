@@ -38,7 +38,7 @@ class Person extends Base
     {
         $kh = '';
         foreach ($data as $v) {
-            $kh .= $v['kh'] . ',';
+            $kh .= "'" . $v['kh'] . "',";
         }
         $kh = rtrim($kh, ',');
         $sql = "select kh from t_pi_person where kh in($kh);";
