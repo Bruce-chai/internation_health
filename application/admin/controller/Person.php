@@ -19,6 +19,7 @@ class Person extends Base
         $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
         if ($data['code'] === 200) {
             $users = $this->dataDeDuplication($data['data']);
+            
             if (empty($users)) {
                 return ['code' => 400, 'msg' => '无新用户'];
             }
@@ -38,12 +39,18 @@ class Person extends Base
     {
         $kh = '';
         foreach ($data as $v) {
-            $kh .= "'" . $v['kh'] . "',";
+            $kh .="'" . $v['kh'] . "',";
         }
+        
         $kh = rtrim($kh, ',');
+        
         $sql = "select kh from t_pi_person where kh in($kh);";
-        $users = pg_query($sql);
-        if (empty($users)) {
+        $resource = pg_query($sql);
+        
+        while($row = pg_fetch_array($resource)){
+            $users[] = $row;
+        }
+        if (!$users) {
             return $data;
         } else {
             foreach ($data as $k => $v) {
