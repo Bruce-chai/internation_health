@@ -41,7 +41,7 @@ class Person extends Base
             $kh .= $v['kh'] . ',';
         }
         $kh = rtrim($kh, ',');
-        $sql = "select kh from t_ins_person where kh in($kh);";
+        $sql = "select kh from t_pi_person where kh in($kh);";
         $users = pg_query($sql);
         if (empty($users)) {
             return $data;
