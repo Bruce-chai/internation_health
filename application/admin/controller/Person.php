@@ -14,8 +14,9 @@ class Person extends Base
      */
     public function save()
     {
+        $date = I('post.date', '');
         $url = $this->baseHost . 'Person/users';
-        $data = create_curl($url, ['date' => '2021-01-26', 'community' => $this->community]);
+        $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
         if ($data['code'] === 200) {
             $res = $this->addAll('t_pi_person', $data['data']);
             if($res === true){

@@ -9,8 +9,9 @@ class MedicalService extends Base
 {
     public function saveCase()
     {
+        $date = I('post.date', '');
         $url = $this->baseHost . 'MedicalService/caseData';
-        $data = create_curl($url, ['community' => $this->community]);
+        $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
         if ($data['code'] === 200) {
             $res = $this->addAll('t_ms_treatment_record', $data['data']);
             if($res === true){
