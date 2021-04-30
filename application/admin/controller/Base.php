@@ -9,9 +9,10 @@ use think\Log;
 class Base extends Controller
 {
     //测试地址
-    protected $baseHost = 'devel2.joyhealth.net/homehealth/index.php/Internet_health/';
+//    protected $baseHost = 'devel2.joyhealth.net/homehealth/index.php/Internet_health/';
     //正式地址
-//    protected $baseHost = 'devel2.joyhealth.net/homehealth/index.php/';
+    protected $baseHost = 'https://www.joyhealth.net/homehealth/index.php/Internet_health/';
+
     protected $community = 1;
     protected $error = '';
     protected $host = '127.0.0.1';
