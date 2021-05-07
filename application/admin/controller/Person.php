@@ -46,7 +46,7 @@ class Person extends Base
         
         $sql = "select kh from t_pi_person where kh in($kh);";
         $resource = pg_query($sql);
-        
+        $users = [];
         while($row = pg_fetch_array($resource)){
             $users[] = $row;
         }
