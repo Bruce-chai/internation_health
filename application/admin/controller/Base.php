@@ -73,6 +73,7 @@ class Base extends Controller
         $value = rtrim($value, ',');
         $sql .= $name . ' values ' . $value . ';';
         $res = pg_query($sql);
+        Log::record('新增记录数： ' . pg_affected_rows($res));
         if ($res === false) {
             $this->error = pg_last_error();
             Log::record($this->error);
@@ -94,6 +95,7 @@ class Base extends Controller
         $val = '(' . rtrim($val, ',') . ')';
         $sql .= $field . ' values ' . $val . ';';
         $res = pg_query($sql);
+        Log::record('新增记录数： ' . pg_affected_rows($res));
         if ($res === false) {
             $this->error = pg_last_error();
             Log::record($this->error);
