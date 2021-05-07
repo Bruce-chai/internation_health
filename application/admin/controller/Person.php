@@ -17,9 +17,9 @@ class Person extends Base
         $date = input('post.date', '');
         $url = $this->baseHost . 'Person/users';
         $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
+        Log::record(json_encode($data));
         if ($data['code'] === 200) {
             $users = $this->dataDeDuplication($data['data']);
-            
             if (empty($users)) {
                 return ['code' => 400, 'msg' => '无新用户'];
             }
@@ -53,6 +53,7 @@ class Person extends Base
         if (!$users) {
             return $data;
         } else {
+            Log::record(json_encode($users));
             foreach ($data as $k => $v) {
                 foreach ($users as $user) {
                     if ($v['kh'] == $user['kh']) {
