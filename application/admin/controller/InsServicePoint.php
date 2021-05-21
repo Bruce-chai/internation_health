@@ -39,7 +39,7 @@ class InsServicePoint extends Base
                 'SFFZJG' => '2',  //是否分支机构 1 是 2 否
                 'SJSCSJ' => date('Y-m-d H:i:d'), //数据生成日期
             );
-            $res = $this->add('t_ins_service_point', $data['data']);
+            $res = $this->add('t_ins_service_point', $data);
             if ($res === false) {
                 throw new \Exception($this->error);
             }
