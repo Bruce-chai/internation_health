@@ -38,6 +38,7 @@ class InsServicePoint extends Base
                 'FWDSZDMZZZDFBZ' => '2',  //服务点所在地民族自治地方标志  1 是 2 否
                 'SFFZJG' => '2',  //是否分支机构 1 是 2 否
                 'SJSCSJ' => date('Y-m-d H:i:d'), //数据生成日期
+                'CXBZ' => '1'
             );
             $res = $this->add('t_ins_service_point', $data);
             if ($res === false) {
