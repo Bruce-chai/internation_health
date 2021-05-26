@@ -19,10 +19,10 @@ class Person extends Base
         $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
         Log::record(json_encode($data));
         if ($data['code'] === 200) {
-            $users = $this->dataDeDuplication($data['data']);
+           /*  $users = $this->dataDeDuplication($data['data']);
             if (empty($users)) {
                 return ['code' => 400, 'msg' => '无新用户'];
-            }
+            }*/
             $res = $this->addAll('t_pi_person', $data['data']);
             if($res === true){
                 return ['code' => 200, 'msg' => '成功'];
