@@ -56,7 +56,7 @@ class Person extends Base
             Log::record(json_encode($users));
             foreach ($data as $k => $v) {
                 foreach ($users as $user) {
-                    if ($v['kh'] == $user['kh']) {
+                    if ($v['kh'] == $user['kh'] && $v['cxbz'] == $user['cxbz']) {
                         unset($data[$k]);
                     }
                 }
