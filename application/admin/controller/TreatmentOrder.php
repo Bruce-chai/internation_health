@@ -10,7 +10,7 @@ class TreatmentOrder extends Base
     public function saveOrder()
     {
         $date = input('post.date', '');
-        $url = $this->baseHost . 'MedicalService/caseData';
+        $url = $this->baseHost . 'TreatmentOrder/caseOrder';
         $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
         if ($data['code'] === 200) {
             $res = $this->addAll('t_ms_treatment_order', $data['data']);
