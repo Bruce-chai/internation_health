@@ -19,6 +19,7 @@ Route::rule('saveStaff', 'admin/Staff/save', 'post');
 Route::rule('saveContacts', 'admin/Contacts/save', 'post');
 Route::rule('saveCase', 'admin/MedicalService/saveCase', 'post');
 Route::rule('saveServicePoint', 'admin/InsServicePoint/save', 'post');
+Route::rule('saveOrder', 'admin/TreatmentOrder/order', 'post');
 
 return [
     '__pattern__' => [

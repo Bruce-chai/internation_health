@@ -5,15 +5,15 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Log;
 
-class MedicalService extends Base
+class TreatmentOrder extends Base
 {
-    public function saveCase()
+    public function saveOrder()
     {
         $date = input('post.date', '');
         $url = $this->baseHost . 'MedicalService/caseData';
         $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
         if ($data['code'] === 200) {
-            $res = $this->addAll('t_ms_treatment_record', $data['data']);
+            $res = $this->addAll('t_ms_treatment_order', $data['data']);
             if($res === true){
                 return ['code' => 200, 'msg' => '成功'];
             } else {
