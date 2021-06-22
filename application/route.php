@@ -20,7 +20,7 @@ Route::rule('saveContacts', 'admin/Contacts/save', 'post');
 Route::rule('saveCase', 'admin/MedicalService/saveCase', 'post');
 Route::rule('saveServicePoint', 'admin/InsServicePoint/save', 'post');
 Route::rule('saveOrder', 'admin/TreatmentOrder/saveOrder', 'post');
-Route::rule('saveDiagnose', 'admin/TreatmentOrder/saveDiagnose', 'post');
+Route::rule('saveDiagnose', 'admin/TreatmentDiagnose/saveDiagnose', 'post');
 
 return [
     '__pattern__' => [
