@@ -13,7 +13,7 @@ class TreatmentDiagnose extends Base
         $url = $this->baseHost . 'TreatmentDiagnose/diagnose';
         $data = create_curl($url, ['date' => $date, 'community' => $this->community]);
         if ($data['code'] === 200) {
-            $res = $this->addAll('t_ms_treatment_Diagnose', $data['data']);
+            $res = $this->addAll('t_ms_treatment_diagnose', $data['data']);
             if($res === true){
                 return ['code' => 200, 'msg' => '成功'];
             } else {
